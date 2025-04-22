@@ -2,11 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
-
 from torch.utils.data import DataLoader, TensorDataset
 
-# ========= 你的 ForgetAttention 模块 ========== #
-from fox_attention import ForgetAttention  # 你已经写好的模块
+from fox_attention import ForgetAttention  
 
 class MiniTransformer(nn.Module):
     def __init__(self, vocab_size=100, hidden_size=256, num_heads=4):
@@ -21,7 +19,8 @@ class MiniTransformer(nn.Module):
         out = out.transpose(0, 1)  # [batch, seq_len, hidden]
         return self.linear(out)
 
-    # 模拟任务：预测下一个 token
+
+if __name__ == "__main__":
     seq_len = 4
     vocab_size = 100
     batch_size = 2
@@ -32,7 +31,7 @@ class MiniTransformer(nn.Module):
     dataset = TensorDataset(X, Y)
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    model = MiniTransformer(vocab_size=100, hidden_size=256, num_heads=4)
+    model = MiniTransformer(vocab_size=vocab_size, hidden_size=256, num_heads=4)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     criterion = nn.CrossEntropyLoss()
 
@@ -49,4 +48,4 @@ class MiniTransformer(nn.Module):
         print(f"Step {step} | Loss: {loss.item():.4f}")
 
         if step == 5:
-            break  # 只跑几步
+            break  
