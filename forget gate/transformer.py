@@ -21,7 +21,7 @@ import math
 import torch
 import torch.nn.functional as F
 import torch.nn as nn
-from megatron.model.fox_attention import FoXAttention
+from megatron.model.fox_attention import ForgetAttention as FoXAttention
 from .norms import get_norm
 from megatron import mpu
 from megatron.model.fused_softmax import FusedScaleMaskSoftmax
