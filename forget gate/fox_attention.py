@@ -69,7 +69,7 @@ class ForgetAttention(nn.Module):
         output = self.out_proj(output)
 
 
-        return output, torch.zeros_like(output), f
+        return output, torch.zeros_like(output)
 
 
 
